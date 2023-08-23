@@ -1,0 +1,199 @@
+MAKİNE ÖĞRENMESİ NEDİR?
+Bilgisayarların insanlara benzer şekilde öğrenmesini sağlamak maksadıyla
+çeşitli algoritma ve tekniklerinin geliştirilmesi için çalışılan bilimsel
+çalışma alanıdır.
+
+DEĞİŞKEN TÜRLERİ NEDİR?
+
+A) KATEGORİK DEĞİŞKENLER
+1- Nominal değişken:
+- Farklı sınıflara veya kategorilere ayrılan verileri temsil eder.
+- Değişkenler arasında herhangi bir sıralama veya derecelendirme farkı yoktur.
+- Örneğin, erkek/kadın, siyah/beyaz, İstanbul/Ankara
+
+2- Ordinal (sıralı) değişken:
+- Farklı sınıflara veya kategorilere ayrılan verileri temsil eder.
+- Değişkenler arasında sıralama veya derecelendirme farkı vardır.
+- Örneğin, 3/2/1, lise/lisans/yüksek lisans/doktora, iyi/orta/kötü
+
+B) SAYISAL DEĞİŞKENLER
+1- Eşit aralıklı (interval) değişken:
+- Ölçüm değerleri arasında anlamlı farklar vardır.
+- Aralıkların oranları yoktur ve mutlak sıfır noktası bulunmaz.
+- Örneğin, 20C°/30C°, 30km/50km, 1685/1987 (yıl)
+
+2- Oran Değişkenleri :
+- Ölçüm değerleri arasındaki aralıkların ve oranların anlamlı olduğu değişkenlerdir.
+- Bu değişkenlerde mutlak sıfır noktası vardır ve oranlar anlamlıdır.
+- Örneğin, 5kg/10kg, 20/40(yaş), 10/20(sayı)
+
+MAKİNE ÖĞRENMESİNDEKİ TEMEL PROBLEMLER
+
+1- Sınıflandırma (classification) problemleri:
+- Sınıflandırma problemlerinde girdi verilerini belirli sınıflara veya
+kategorilere atama amacını taşır.
+- Her veri noktası için, belirli bir sınıf etiketi tahmin edilir.
+- Email spam filtresi, el yazısı tanıma, cinsiyet tanıma,
+ses ve duygu analizi, hastalık teşhisi örnek verilebilir.
+
+2- Regresyon (regression) problemleri:
+- Regresyon problemlerinde temel nokta bağımlı bir değişkenin bağımsız değişkenlere
+nasıl bağlı olduğunu anlamak ve tahmin etmektir. Yani çıktı değeri sürekli bir
+aralıkta yer alır.
+- Ev fiyat tahmini, gelir tahmini, hisse senedi tahmini, enerji tüketimi
+tahmini, arz-talep durumu örnek verilebilir.
+
+
+ÖĞRENME TÜRLERİ (LEARNING TYPES)
+
+1- Denetimli (Supervised) Öğrenme:
+- Algoritmanin beslendiği eğitim veri setinin etiket olarak adlandırılması ile oluşur.
+- Algoritma, veri örneklerinin girdilerini çıktılarıyla ilişkilendirerek veri seti
+üzerinde bir model oluşturur.
+- Genellikle sınıflandırma ve regresyon problemlerini çözmek için kullanılır.
+- K-en yakın komşular, lojistik bağlanım, destek vektör makineleri, karar ağaçları
+örnek verilebilir.
+
+2- Denetimsiz (Unsupervised) Öğrenme:
+- Algoritmanın beslendiği eğitim verileri etiksetsizdir.
+- Algoritma, veri örneklerinin içindeki desenleri ve yapaylıkları bulmaya çalışır
+ve bu örüntüleri temeldeki yapıyı anlamak ve veri setini entegre etmek için kullanılır.
+- Kümeleme ve boyut indirgeme gibi problemleri çözmek için kullanılır.
+
+3- Pekiştirmeli (Reinforcement Learning):
+- Bu bağlamda "ajan" adı verilen öğrenme sistemi, çevreyi gözlemleyebilir, eylemleri
+gerçekleştirebilir ve karşılığında ödülleri almaya çalışır.
+- Daha sonra zaman içinde en yüksek ödülü almak için kendi başına en iyi stratejinin
+ne olduğunu bulmaya çalışır.
+- Bu tür öğrenme genellikle karar alma problemlerinde kullanılır.
+
+
+MODEL BAŞARI DEĞERLENDİRME YÖNTEMLERİ
+
+1-REGRESYON MODELLERİNDE KULLANILAN BAŞARI YÖNTEMLERİ
+
+1- Ortalama Kare Hata (Mean Squared Error - MSE):
+- Gerçek çıktı ile tahmin edilen çıktı değerleri arasındaki farkların karesinin
+ortalamasıdır. Daha yüksek hata değerleri daha kötü bir model gösterir.
+- MSE, özellikle büyük hataların daha fazla cezalandırıldığı durumlarda kullanılır.
+
+2- Kök Ortalama Kare Hata (Root Mean Squered Error - RMSE):
+- Gerçek çıktı değerleri ile tahmin edilen çıktı değerleri arasındaki farkların
+karelerinin ortalamasının karekökü olarak hesaplanır.
+- RMSE, tahminlerin gerçek değerlere ne kadar yakın olduğunu ve modelin tahmin
+yeteneğini ölçmek için kullanılır.
+
+3- Ortalama Mutlak Hata (Mean Absolute Error - MAE):
+- Gerçek çıktı değerleri ile tahmin edilen değerleri arasında mutlak farkların ortalamasıdır.
+- MSE'ye göre daha az ceza verici bir ölçüttür.
+
+4- R-Kare (R-Squared):
+- Modelin açıklama gücünü ölçer. Bağımlı değişkendeki varyansın bağımsız değişkenlerin
+tarafından ne kadar açıklandığını ifade eder.
+- 1'e yaklaştıkça daha iyi bir model performansı gösterir.
+
+
+2- SINIFLANDIRMA MODELLERİNDE KULLANILAN BAŞARI YÖNTEMLERİ
+
+1- Doğruluk (Accuracy):
+- Sınıflandırma problemlerinde en temel değerlendirme metriklerinden biridir.
+- Doğru tahmin edilen örneklerin toplam örnek sayısına oranını ifade eder.
+- Dengesiz sınıf dağılımları durumunda güvenilir bir ölçüm olmayabilir.
+
+2- Hassasiyet (Precision):
+- Pozitif olarak tahmin edilen örneklerin gerçekte pozitif olan örnekler
+arasındaki oranını ifade eder.
+- Yanlış pozitiflerin sayısını minimize etmek istendiğinde önemlidir.
+
+3- Duyarlıklık (Recall/Sensitivity):
+- Gerçek pozitiflerin (doğru tahmin edilen pozitif örnekler) gerçek pozitifler
+veya yanlış negatiflerin toplam pozitif örnekler arasındaki oranını ifade eder.
+- Yanlış negatiflerin sayısı minimize etmek istendiğinde önemlidir.
+
+4- F1-Skoru(F1-Score):
+- Hassasiyet ve duyarlılık arasındaki dengeyi sağlamak için kullanılır.
+- Hassasiyet ve duyarlılığın harmonik ortalaması olarak hesaplanır.
+
+5- AUC-ROC Eğrisi:
+- Sınıflandırma modellerinin performansını değerlendiren bir metrik.
+- ROC eğrisi altındaki alan, farklı eşik değerleri altında gerçek pozitif
+oranını yanlış pozitif oranına karşı çizer ve bu alan modelin ayrım yeteneğini
+gösterir.
+
+6- KARMAŞIKLIK MATRİSİ (Confusion Matrix):
+- Gerçek sınıflar ile tahmin edilen sınıflar arasındaki ilişkiyi gösteren
+bir matristir.
+- Bu matris, doğru veya yanlış sınıflandırmaları daha ayrıntılı bir şekilde
+anlamak içn kullanılır.
+
+
+MAKİNE ÖĞRENMESİNDE MODEL DOĞRULAMA YÖNTEMLERİ
+
+- Makine öğrenmesinde model doğrulama yöntemleri, bir modelin gerçek dünya verileri
+üzerinde ne kadar iyi performans gösterdiğini değerlendirmek amacıyla kullanılır.
+- Bu yöntemler, modelin overfitting (aşırı uyum) veya underfitting (yetersiz uyum)
+gibi problemlere sahip olup olmadığını anlamak için önemlidir.
+
+1- Sınama Seti Yöntemi (Holdout method):
+- Veri setini train - validation - test split şeklinde üç parçaya ayırarak kullanılan bu yöntemde,
+verilerin bir kısmı modeli eğitmek için, bir kısmı modeli doğrulamak için ve bir kısmı da modelin nihai
+performansını test etmek için kullanılır.
+
+2- Çapraz Doğrulama (K - Fold Cross Validation):
+- Veri seti farklı alt kümelerine bölünerek birden fazla model eğitimi ve
+değerlendirmesi yapılır.
+Veri seti k parçaya bölünür ve her bir parça sırayla doğrulama için kullanılırken
+diğerleri eğitim için kullanılır.
+- Bu yöntem, veri setinin daha verimli kullanılmasını sağlar ve modelin genel
+performansını daha güvenilir bir şekilde değerlendirmeye yardımcı olur.
+
+3- Bayes Çapraz Doğrulama:
+- Bayes istatistiği temel alınarak yapılan bir çapraz doğrulama yöntemidir.
+- Model seçimi ve performans değerlendirmesi için kullanılır.
+
+
+# YANLILIK - VARYANS DEĞİŞ TOKUŞU (BIAS-VARIANCE TRADEOFF)
+
+- Bir modelin performansını değerlendirirken, hem yanlılık (bias) hem de varyansı
+arasındaki dengeyi anlamak ve optimize etmek önemlidir.
+
+Yanlılık (bias): Yanlılık, bir modelin tahminlerinin gerçek değerlere ne kadar
+yakın olduğunu ifade eder. Düşük yanlılık, modelin verilere iyi uydurulduğunu
+gösterirken, yüksek yanlılık modelin verileri yetersiz bir şekilde temsil
+ettiğini gösterir.
+
+Varyans(varience): Varyans, modelin farklı veri noktalarına ne kadar duyarlı olduğunu
+ifade eder. Düşük varyans, modelin farklı veri noktaları arasındaki farkları
+fazla yakalanmadığını gösterirken, yüksek varyans modelin verilere fazla uymuş
+olabileceğini gösterir.
+
+Aşırı öğrenme(overfitting): Aşırı öğrenme, bir modelin eğitim verilerine çok
+fazla uyum sağlamış olduğu durumu ifade eder. Bu durumda, model eğitim verilerindeki
+gürültüye ve örneklem özgü verilere aşırı tepki verir. Sonuç olarak, model eğitim
+verileri üzerinde yüksek bir performans sergilerken, yeni ve görmediği verilerde
+kötü performans sergileyebilir.
+
+Az Öğrenme(Underfitting): Az öğrenme, bir modelin hem eğitim verilerine hem de
+yeni verilere kötü bir şekilde uyum sağladığı durumu ifade eder. Bu durumda, model
+eğitim verilerini yeterince anlamamış ve genel örüntü verilerini anlamamış olabilir.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
