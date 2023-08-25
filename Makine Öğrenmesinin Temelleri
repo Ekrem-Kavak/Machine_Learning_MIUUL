@@ -43,6 +43,28 @@ aralıkta yer alır.
 - Ev fiyat tahmini, gelir tahmini, hisse senedi tahmini, enerji tüketimi
 tahmini, arz-talep durumu örnek verilebilir.
 
+3- Kümeleme (clustering) problemleri:
+- Kümeleme problemleri, Bir veri kümesinde bulunan benzer veri noktalarını
+gruplara ayırma problemidir.
+- Kümeleme problemleri, denetimsiz öğrenme problemleri olarak sınıflandırılır çünkü
+veri noktalarının hangi gruplara ait olduğuna dair önceden bir bilgi yoktur.
+- Müşteri satın alma davranışları, görüntülerdeki nesneleri gruplamak ve metindeki
+kavramları gruplandırmak örnbek verilebilir.
+
+4- Boyut indirgeme (size reducing) problemleri:
+- Boyut indirgeme problemi, bir veir kümesinin boyutunu küçülterek makine öğrenimi
+modellerinin performansını ve verimliliğini artırma problemidir.
+- Veri kümeleri, çok sayıda özellik içerebilir ve bu durum, modellerin eğitilmesini
+ve tahminler yapmasını zorlaştırabilir. Boyut indirgeme sayesinde modellerin öğrenimi
+kolaylaşır.
+- Görüntü tanıma, doğal dil işleme gibi alanlarda sıkça kullanılır.
+
+5- Tavsiye sistemleri (recommandation) problemleri:
+- Tavsiye sistemi problemleri, kullanıcılara ilgi alanlarına veya geçmiş davranışlara
+göre içerik önerir.
+- Kullanıcıların tercihleri ve davranışları hakkında veri toplar ve bu verilerin
+benzerliklerini, ilgi alanlarını inceler. Bu doğrultuda öneriler verir.
+
 
 ÖĞRENME TÜRLERİ (LEARNING TYPES)
 
@@ -55,7 +77,7 @@ tahmini, arz-talep durumu örnek verilebilir.
 örnek verilebilir.
 
 2- Denetimsiz (Unsupervised) Öğrenme:
-- Algoritmanın beslendiği eğitim verileri etiksetsizdir.
+- Algoritmanın beslendiği eğitim verileri etiketsizdir.
 - Algoritma, veri örneklerinin içindeki desenleri ve yapaylıkları bulmaya çalışır
 ve bu örüntüleri temeldeki yapıyı anlamak ve veri setini entegre etmek için kullanılır.
 - Kümeleme ve boyut indirgeme gibi problemleri çözmek için kullanılır.
