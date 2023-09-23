@@ -85,11 +85,11 @@ için kullanılır. Bu olasılık, 0 ile 1 arasında bir değerdir.
 """
 DIABETES PREDICTION WITH LOGISTIC REGRESSION 
 
-Problem: Özellikleri belirtildiğinde kişilerin diyabet hastası oluğ
-olmadıkklarını tahmin eden bir makine öğrenmesi geliştirebilir misiniz?
+Problem: Özellikleri belirtildiğinde kişilerin diyabet hastası olup
+olmadıklarını tahmin eden bir makine öğrenmesi geliştirebilir misiniz?
 
 Veri seti: "diabets.csv" dosyası ABD'deki Ulusal Diyabet-Sindirim-Böbrek 
-Hastalıkları Enstitüleri'nde tutulan büyük veri seinin parçasıdır. ABD'deki
+Hastalıkları Enstitüleri'nde tutulan büyük veri setinin parçasıdır. ABD'deki
 Arizona Eyaleti'nin en büyk 5. şehri olan Phoneix şehrinde yaşayan 21 yaş  
 ve üzerinde olan Pima Indian kadınları üzerinde yapılan diyabet araştırması
 için kullanılan verilerdir. 768 gözlem ve 8 sayısal bağımsız değişken üzerinde
@@ -106,7 +106,7 @@ BMI: Beden kitle indeksi
 DiabetesPedigreeFunction: Soyumuzdaki kişilere göre diyabet olma 
 olasılığını hesaplayan bir fonksiyon
 Age: Yaş (yıl)
-Outcome: Kişinin diyabet olup olmadığı bilgisi. Hastalığa sahip (1) değişse (0)
+Outcome: Kişinin diyabet olup olmadığı bilgisi. Hastalığa sahip (1) değilse (0)
 
 
 """
@@ -122,7 +122,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, cla
 from sklearn.model_selection import train_test_split, cross_validate
 
 pd.set_option('display.max_columns', None)
-pd.set_option('display.float_format', lambda x: '%3.f' %x)
+pd.set_option('display.float_format', lambda x: '%.3f' %x)
 pd.reset_option('display.width', 500)
 
 def outlier_threshold(dataframe, col_name, q1 = 0.05, q3 = 0.95):
@@ -144,3 +144,57 @@ def replace_with_threshold(dataframe, variable):
     low_limit, up_limit = outlier_threshold(dataframe, variable)
     dataframe.loc[(dataframe[variable] < low_limit), variable] = low_limit
     dataframe.loc[(dataframe[variable] > up_limit), variable] = up_limit
+
+# EXPLORATORY DATA ANALYSIS (KEŞİFÇİ VERİ ANALİZİ)
+
+df = pd.read_csv("datasets/diabetes.csv")
+df.head()
+df.shape
+
+# Target (hedef değişken) analizi
+df["Outcome"].value_counts()
+
+# görselleştirme
+sns.countplot(x = "Outcome", data = df)
+plt.show()
+
+100 * df["Outcome"].value_counts() / len(df)
+
+# Feature (bağımsız değişkenlerin) analizi
+
+df.describe().T
+
+df["Glucose"].hist(bins = 20)
+plt.xlabel("Glucose")
+plt.show()
+
+# görselleştirme
+
+def plot_numerical_col(dataframe, numerical_col):
+    dataframe[numerical_col].hist(bins = 20)
+    plt.xlabel(numerical_col)
+    plt.show(block = True)
+
+for col in df.columns:
+    plot_numerical_col(df, col)
+
+cols = [col for col in df.columns if "Outcome" not in col] # sadece bağımsız değişkenler
+
+for col in cols:
+    plot_numerical_col(df, col)
+
+# Target vs Features
+
+df.groupby("Outcome").agg({"Pregnancies": "mean"})
+
+# Bağımlı değişkenin bağımsız değişkenlerle ilişkisi
+
+df.groupby("Outcome").agg({"Pregnancies":"mean"})
+
+def target_summary_with_num(dataframe, target, numerical_col):
+    print(dataframe.groupby(target).agg({numerical_col: "mean"}), end= '\n\n\n')
+
+for col in cols:
+    target_summary_with_num(df, "Outcome", col)
+
+
