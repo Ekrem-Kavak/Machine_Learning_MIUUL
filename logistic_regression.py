@@ -125,23 +125,23 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.float_format', lambda x: '%.3f' %x)
 pd.reset_option('display.width', 500)
 
-def outlier_threshold(dataframe, col_name, q1 = 0.05, q3 = 0.95):
+def outlier_thresholds(dataframe, col_name, q1 = 0.05, q3 = 0.95):
     quartile1 = dataframe[col_name].quantile(q1)
     quartile3 = dataframe[col_name].quantile(q3)
     interquartile_range = quartile3 - quartile1
     up_limit = quartile3 + 1.5 * interquartile_range
-    low_limit = quartile1 + 1.5 * interquartile_range
+    low_limit = quartile1 - 1.5 * interquartile_range
     return low_limit, up_limit
 
 def check_outlier(dataframe, col_name):
-    low_limit, up_limit = outlier_threshold(dataframe, col_name)
-    if dataframe[(dataframe(col_name) > up_limit) | (dataframe[col_name] < low_limit)].any(axis = None):
+    low_limit, up_limit = outlier_thresholds(dataframe, col_name)
+    if dataframe[(dataframe[col_name] > up_limit) | (dataframe[col_name] < low_limit)].any(axis=None):
         return True
     else:
         return False
 
 def replace_with_threshold(dataframe, variable):
-    low_limit, up_limit = outlier_threshold(dataframe, variable)
+    low_limit, up_limit = outlier_thresholds(dataframe, variable)
     dataframe.loc[(dataframe[variable] < low_limit), variable] = low_limit
     dataframe.loc[(dataframe[variable] > up_limit), variable] = up_limit
 
@@ -197,4 +197,57 @@ def target_summary_with_num(dataframe, target, numerical_col):
 for col in cols:
     target_summary_with_num(df, "Outcome", col)
 
+df.isnull().sum()
 
+df.describe().T
+
+for col in cols:
+    print(col, check_outlier(df, col))
+
+replace_with_threshold(df, "Insulin")
+
+# scaler
+
+for col in cols:
+    df[col] = RobustScaler().fit_transform(df[[col]])
+
+df.head()
+
+# MODEL & PREDICTION
+
+y = df["Outcome"]
+X = df.drop(["Outcome"], axis = 1)
+
+log_model = LogisticRegression().fit(X,y)
+
+log_model.intercept_ # sabit
+log_model.coef_ # bağımsız değişkenlerin ağırlıkları
+
+y_pred = log_model.predict(X)
+
+y_pred[0: 10]
+y[0:10]
+
+# Model Evulation
+
+def plot_confusion_matrix(y, y_pred):
+    acc = round(accuracy_score(y, y_pred), 2)
+    cm = confusion_matrix(y, y_pred)
+    sns.heatmap(cm, annot = True, fmt = ".0f")
+    plt.xlabel('y_pred')
+    plt.ylabel('y')
+    plt.title('Accuracy Score {0}'.format(acc), size = 10)
+    plt.show()
+
+plot_confusion_matrix(y, y_pred)
+
+print(classification_report(y, y_pred))
+
+# Accuracy: 0.78
+# Prediction: 0.74
+# Recall: 0.58
+# F1-score: 0.65
+
+# ROC AUC
+y_prob = log_model.predict_proba(X)[:,1]
+roc_auc_score(y, y_prob) # 0.83939
